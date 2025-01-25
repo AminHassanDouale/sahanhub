@@ -165,7 +165,7 @@ const Footer = () => {
             <AnimationContainer delay={0.6} className="w-full">
                 <div className="mt-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
                     <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-                        &copy; 2024 Caps AI INC. All rights reserved.
+                        &copy; 2024 Sahan Hub. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4 mt-4 lg:mt-0">
                         <div className="w-10 h-10 rounded-full overflow-hidden inner-shadow flex flex-col items-center justify-center relative cursor-pointer group">

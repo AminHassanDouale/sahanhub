@@ -24,6 +24,7 @@ const Menu = () => {
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
+                {/* 
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground">
                         Features
@@ -93,6 +94,7 @@ const Menu = () => {
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
+                */}
             </NavigationMenuList>
         </NavigationMenu>
     )

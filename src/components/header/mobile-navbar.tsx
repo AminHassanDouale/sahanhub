@@ -73,6 +73,7 @@ const MobileNavbar = () => {
                                         How it works
                                     </Link>
                                 </li>
+                                {/* 
                                 <Accordion type="single" collapsible className="w-full">
                                     <AccordionItem value="item-1" className="border-transparent">
                                         <AccordionTrigger className="px-4 py-2 text-base font-normal">
@@ -171,6 +172,7 @@ const MobileNavbar = () => {
                                         </AccordionContent>
                                     </AccordionItem>
                                 </Accordion>
+                                */}
                             </ul>
 
                             <div className="flex flex-col items-center justify-center w-full gap-4 p-6 mt-auto">
