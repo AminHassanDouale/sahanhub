@@ -23,21 +23,7 @@ const Navbar = () => {
                             <Menu />
                         </div>
                     </div>
-                    {/*
-                    <div className="items-center hidden lg:flex gap-x-4">
-                        <Button size="sm" variant="secondary" asChild>
-                            <Link href="/auth/login">
-                                Login
-                            </Link>
-                        </Button>
-                        <Button size="sm" variant="white" asChild>
-                            <Link href="/pricing">
-                                Start for free
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </Link>
-                        </Button>
-                    </div>
-                     */}
+                
                 </div>
             </div>
 
