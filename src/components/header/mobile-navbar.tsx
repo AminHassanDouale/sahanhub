@@ -76,19 +76,7 @@ const MobileNavbar = () => {
                               
                             </ul>
 
-                            <div className="flex flex-col items-center justify-center w-full gap-4 p-6 mt-auto">
-                                <Button variant="secondary" className="w-full" asChild>
-                                    <Link href="/auth/login" className="w-full">
-                                        Login
-                                    </Link>
-                                </Button>
-                                <Button className="w-full" asChild>
-                                    <Link href="/auth/register" className="flex items-center w-full">
-                                        Start for free
-                                        <ArrowRight className="w-4 h-4 ml-2" />
-                                    </Link>
-                                </Button>
-                            </div>
+                            
                         </motion.div>
                     )}
                 </AnimatePresence>
