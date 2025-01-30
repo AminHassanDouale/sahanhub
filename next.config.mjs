@@ -1,20 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  experimental: {
-    // Remove optimizeCss since it's causing issues
-    optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-navigation-menu', 'lucide-react', 'framer-motion'],
+  output: 'export',  // Changed to export
+  images: {
+    unoptimized: true, // Required for export
   },
-  webpack: (config, { isServer }) => {
-    // Optimize bundle size
-    config.optimization = {
-      ...config.optimization,
-      minimize: true,
-    }
-    
-    return config
-  },
-  // Keep redirect configuration
+  // Remove experimental features
   async redirects() {
     return [
       {
