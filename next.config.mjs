@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   experimental: {
-    optimizeCss: true,
+    // Remove optimizeCss since it's causing issues
     optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-navigation-menu', 'lucide-react', 'framer-motion'],
   },
   webpack: (config, { isServer }) => {
