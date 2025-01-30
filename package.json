@@ -24,9 +24,9 @@
     "hamburger-react": "^2.5.0",
     "lucide-react": "^0.358.0",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^14.2.23",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
     "react-hot-toast": "^2.5.1",
     "react-parallax-tilt": "^1.7.217",
@@ -36,7 +36,7 @@
     "usehooks-ts": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "18.17.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
