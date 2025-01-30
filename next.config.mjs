@@ -1,24 +1,35 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Cloudflare specific config
-    experimental: {
-      isrMemoryCacheSize: 0, // Recommended for Cloudflare Pages
-    },
-    async redirects() {
-      return [
-        {
-          source: '/:path*', // This will catch all paths, not just root
-          has: [
-            {
-              type: 'host',
-              value: 'www.sahan-hub.com',
-            },
-          ],
-          destination: 'https://sahan-hub.com/:path*',
-          permanent: true,
-        },
-      ];
-    },
-  };
-  
-  export default nextConfig;
+  output: 'standalone',
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-navigation-menu', 'lucide-react', 'framer-motion'],
+  },
+  webpack: (config, { isServer }) => {
+    // Optimize bundle size
+    config.optimization = {
+      ...config.optimization,
+      minimize: true,
+    }
+    
+    return config
+  },
+  // Keep redirect configuration
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.sahan-hub.com',
+          },
+        ],
+        destination: 'https://sahan-hub.com/:path*',
+        permanent: true,
+      },
+    ]
+  }
+}
+
+export default nextConfig
