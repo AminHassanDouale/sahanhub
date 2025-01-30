@@ -2,6 +2,10 @@
   "name": "socialize",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.17.1",
+    "npm": "9.6.7"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,7 +24,7 @@
     "hamburger-react": "^2.5.0",
     "lucide-react": "^0.358.0",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^14.0.0",
+    "next": "^14.2.23",
     "react": "^18",
     "react-dom": "^18",
     "react-element-to-jsx-string": "^15.0.0",
