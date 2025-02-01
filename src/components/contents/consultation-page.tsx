@@ -119,8 +119,9 @@ const ConsultationPage = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Schedule a Consultation</h1>
           <p className="text-xl text-muted-foreground">
-            Let's discuss how SAHAN HUB can help transform your business
-          </p>
+          Let&apos;s discuss how SAHAN HUB can help transform your business
+
+</p>
         </div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 bg-background border border-border/60 rounded-lg p-6">

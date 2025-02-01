@@ -131,7 +131,7 @@ const PromotionalShowcase: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-semibold mb-2">Ready to Transform Your Business?</h3>
-              <p className="text-neutral-500">Let's discuss how SAHAN HUB can drive your success</p>
+              <p className="text-neutral-500">Let&apos;s discuss how SAHAN HUB can drive your success</p>
             </div>
             <Button size="lg" className="whitespace-nowrap">
               Get Started Today

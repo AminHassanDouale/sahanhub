@@ -193,7 +193,7 @@ const ServicesPage: React.FC = () => {
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-4">Ready to Transform Your Business?</h2>
           <p className="text-muted-foreground mb-6">
-            Let's discuss how our services can help you achieve your goals
+            Let&apos; discuss how our services can help you achieve your goals
           </p>
           <div className="flex justify-center gap-4">
           <Link href="/consultation">
