@@ -1,11 +1,92 @@
-import { Heart } from 'lucide-react'
+"use client";
+
+import { Heart, CheckCircle2, Loader2 } from 'lucide-react'
 import Link from 'next/link'
+import React, { useState, useRef } from 'react'
+import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import Icons from '../ui/icons'
-import { Input } from '../ui/input'
 import AnimationContainer from "../utils/animation-container"
+import { supabase } from '@/lib/supabase'
 
 const Footer = () => {
+    const [email, setEmail] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = useState('')
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    // Auto-dismiss success alert after 3 seconds
+    React.useEffect(() => {
+        if (submitStatus === 'success') {
+            const timer = setTimeout(() => {
+                setSubmitStatus('idle')
+            }, 3000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [submitStatus])
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
+        setErrorMessage('')
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            setErrorMessage('Please enter a valid email address')
+            setSubmitStatus('error')
+            setIsSubmitting(false)
+            return
+        }
+
+        try {
+            // Check if email already exists
+            const { data: existingSubscription } = await supabase
+                .from('subscriptions')
+                .select('email')
+                .eq('email', email)
+                .single()
+
+            if (existingSubscription) {
+                throw new Error('This email is already subscribed')
+            }
+
+            // Insert new subscription
+            const { error: insertError } = await supabase
+                .from('subscriptions')
+                .insert([
+                    {
+                        email,
+                        status: 'active',
+                        verified: false
+                    }
+                ])
+
+            if (insertError) throw insertError
+
+            // Success handling
+            setSubmitStatus('success')
+            setEmail('')
+            if (inputRef.current) {
+                inputRef.current.value = ''
+            }
+
+        } catch (error: any) {
+            console.error('Subscription error:', error)
+            setSubmitStatus('error')
+            setErrorMessage(
+                error.message === 'This email is already subscribed'
+                    ? error.message
+                    : 'Something went wrong. Please try again.'
+            )
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <footer className="flex flex-col relative items-center justify-center border-t border-border pt-16 pb-8 px-6 lg:px-8 w-full max-w-6xl mx-auto lg:pt-32">
             <div className="hidden lg:block absolute bottom-0 -left-1/4 bg-primary w-72 h-72 rounded-full -z-10 blur-[14rem]"></div>
@@ -14,7 +95,11 @@ const Footer = () => {
                 <AnimationContainer>
                     <div className="flex flex-col items-start justify-start md:max-w-[200px]">
                         <div className="flex items-start">
-                            <Icons.logo className="w-full h-6" />
+                            <Link href="/">
+                                <span className="px-2 py-[0.5px] h-[18px] tracking-wide flex items-center justify-center rounded-full bg-gradient-to-r from-blue-400 to-blue-600 text-[9px] font-medium mr-2 text-white">
+                                    SAHAN HUB
+                                </span>
+                            </Link>
                         </div>
                         <p className="text-muted-foreground mt-4 text-sm text-start">
                             Transforming businesses through innovative technology solutions and expert consulting.
@@ -147,16 +232,52 @@ const Footer = () => {
                         </p>
                     </div>
                     <div className="relative flex mt-4 lg:mt-0">
-                        <form className="flex items-center relative">
-                            <Input
-                                required
-                                spellCheck={false}
-                                placeholder="Email address"
-                                className="text-sm text-foreground focus:outline-none outline-none focus:border-primary bg-background/50"
-                            />
-                            <Button type="submit" size="sm" variant="default" className="ml-2 px-6">
-                                Subscribe
-                            </Button>
+                        <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-2">
+                            <div className="flex items-center relative">
+                                <Input
+                                    ref={inputRef}
+                                    required
+                                    type="email"
+                                    spellCheck={false}
+                                    placeholder="Email address"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className={`text-sm text-foreground focus:outline-none outline-none 
+                                        focus:border-primary bg-background/50 pr-10 
+                                        ${submitStatus === 'success' ? 'border-green-500' : ''}
+                                        ${submitStatus === 'error' ? 'border-red-500' : ''}`}
+                                    disabled={isSubmitting || submitStatus === 'success'}
+                                />
+                                <Button 
+                                    type="submit" 
+                                    size="sm" 
+                                    variant="default" 
+                                    className="ml-2 px-6 min-w-[100px]"
+                                    disabled={isSubmitting || submitStatus === 'success'}
+                                >
+                                    {isSubmitting ? (
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                    ) : submitStatus === 'success' ? (
+                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                    ) : (
+                                        'Subscribe'
+                                    )}
+                                </Button>
+                            </div>
+                            
+                            {/* Custom Alert Messages */}
+                            <div className="min-h-[32px] transition-all duration-300">
+                                {submitStatus === 'success' && (
+                                    <div className="text-sm text-green-500 bg-green-500/10 px-4 py-2 rounded-md border border-green-500/20 animate-fadeIn">
+                                        Successfully subscribed! Check your inbox.
+                                    </div>
+                                )}
+                                
+                                {submitStatus === 'error' && (
+                                    <div className="text-sm text-red-500 bg-red-500/10 px-4 py-2 rounded-md border border-red-500/20 animate-fadeIn">
+                                        {errorMessage}
+                                    </div>
+                                )}
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -187,9 +308,8 @@ const Footer = () => {
                     </div>
                 </div>
             </AnimationContainer>
-
         </footer>
     )
-};
+}
 
 export default Footer

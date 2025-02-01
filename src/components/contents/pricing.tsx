@@ -1,239 +1,156 @@
 "use client";
 
-import { cn } from '@/lib/utils';
-import { CircleArrowUp, CreditCard, Shield, Headset, Check } from 'lucide-react';
-import { useState } from 'react';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
+import React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { LucideIcon, Rocket, Brain, Target, Shield, TrendingUp, Database, Code, Users } from 'lucide-react';
 import AnimationContainer from "../utils/animation-container";
 
-interface PricingPlan {
-    id: number;
-    title: string;
-    priceMonthlyUSD: string;
-    priceYearlyUSD: string;
-    priceMonthlyDJF: string;
-    priceYearlyDJF: string;
-    buttonText: string;
-    features: string[];
+interface FeatureCardProps {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  delay: number;
 }
 
-const plans: PricingPlan[] = [
+interface OutcomeMetricProps {
+  value: string;
+  label: string;
+  delay: number;
+}
+
+interface Feature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description, delay }) => (
+  <AnimationContainer delay={delay} className="w-full">
+    <div className="flex flex-col h-full p-6 transition-all rounded-2xl border hover:border-primary/60 bg-background">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="p-2 rounded-lg bg-primary/10">
+          <Icon className="w-6 h-6 text-primary" />
+        </div>
+        <h3 className="text-xl font-semibold">{title}</h3>
+      </div>
+      <p className="text-neutral-500">{description}</p>
+    </div>
+  </AnimationContainer>
+);
+
+const OutcomeMetric: React.FC<OutcomeMetricProps> = ({ value, label, delay }) => (
+  <AnimationContainer delay={delay} className="text-center">
+    <div className="mb-2 text-3xl font-bold text-primary">{value}</div>
+    <div className="text-sm text-neutral-500">{label}</div>
+  </AnimationContainer>
+);
+
+const PromotionalShowcase: React.FC = () => {
+  const features: Feature[] = [
     {
-        id: 1,
-        title: "Essential",
-        priceMonthlyUSD: "$2,999",
-        priceYearlyUSD: "$29,999",
-        priceMonthlyDJF: "DJF 532,000",
-        priceYearlyDJF: "DJF 5,320,000",
-        buttonText: "Start Project",
-        features: [
-            "Custom Software Development",
-            "Basic Data Analytics",
-            "Technology Stack Evaluation",
-            "Cloud Infrastructure Setup",
-            "3 Months Support & Maintenance",
-            "Basic Security Implementation",
-            "Documentation & Knowledge Transfer"
-        ]
+      icon: Rocket,
+      title: "Digital Transformation",
+      description: "Revolutionize your business with cutting-edge technology solutions tailored to your needs."
     },
     {
-        id: 2,
-        title: "Professional",
-        priceMonthlyUSD: "$4,999",
-        priceYearlyUSD: "$49,999",
-        priceMonthlyDJF: "DJF 887,000",
-        priceYearlyDJF: "DJF 8,870,000",
-        buttonText: "Contact Sales",
-        features: [
-            "Advanced Software Solutions",
-            "Data Analytics & BI Dashboard",
-            "ML/AI Implementation",
-            "Process Automation & Optimization",
-            "Digital Transformation Roadmap",
-            "12 Months Premium Support",
-            "ROI Analysis & Strategy Planning"
-        ]
+      icon: Brain,
+      title: "AI & Machine Learning",
+      description: "Harness the power of artificial intelligence to gain competitive advantages and insights."
     },
     {
-        id: 3,
-        title: "Enterprise",
-        priceMonthlyUSD: "Custom",
-        priceYearlyUSD: "Custom",
-        priceMonthlyDJF: "Contact Us",
-        priceYearlyDJF: "Contact Us",
-        buttonText: "Contact Us",
-        features: [
-            "Full Digital Transformation",
-            "Custom AI/ML Solutions",
-            "Data Strategy Consulting",
-            "Enterprise Architecture Planning",
-            "24/7 Priority Support",
-            "Dedicated Project Manager",
-            "Change Management & Training"
-        ]
+      icon: Database,
+      title: "Data Analytics",
+      description: "Transform raw data into actionable intelligence with our advanced analytics solutions."
+    },
+    {
+      icon: Code,
+      title: "Custom Development",
+      description: "Build scalable, secure, and efficient software solutions designed for your specific requirements."
     }
-];
+  ];
 
-type Plan = "monthly" | "annually";
-type Currency = "USD" | "DJF";
+  const metrics: OutcomeMetricProps[] = [
+    { value: "95%", label: "Client Satisfaction", delay: 0.1 },
+    { value: "500+", label: "Projects Delivered", delay: 0.2 },
+    { value: "40%", label: "Cost Reduction", delay: 0.3 },
+    { value: "24/7", label: "Expert Support", delay: 0.4 }
+  ];
 
-const Pricing = () => {
-    const [billPlan, setBillPlan] = useState<Plan>("monthly");
-    const [currency, setCurrency] = useState<Currency>("USD");
+  const trustIndicators: { icon: LucideIcon; text: string; delay: number }[] = [
+    { icon: Target, text: "Industry Expertise", delay: 0.5 },
+    { icon: Users, text: "Dedicated Support Team", delay: 0.6 },
+    { icon: TrendingUp, text: "Proven Results", delay: 0.7 }
+  ];
 
-    const handleSwitch = () => {
-        setBillPlan((prev) => (prev === "monthly" ? "annually" : "monthly"));
-    };
+  return (
+    <div className="relative flex flex-col items-center justify-center max-w-6xl py-20 mx-auto px-4">
+      {/* Hero Section */}
+      <div className="flex flex-col items-center justify-center max-w-2xl mx-auto text-center mb-16">
+        <AnimationContainer className="flex flex-col items-center justify-center">
+          <Badge variant="outline" className="mb-6">
+            <Shield className="w-4 h-4" />
+            <span className="ml-2 text-sm">Transform Your Business</span>
+          </Badge>
+          <h1 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+            Innovate. Transform. Succeed.
+          </h1>
+          <p className="text-lg text-neutral-500 mb-8">
+            Join the digital revolution with SAHAN HUB's comprehensive technology solutions and expert consulting services.
+          </p>
+          <div className="flex gap-4">
+            <Button size="lg">Schedule Consultation</Button>
+            <Button size="lg" variant="outline">View Solutions</Button>
+          </div>
+        </AnimationContainer>
+      </div>
 
-    const getPrice = (plan: PricingPlan) => {
-        if (currency === "USD") {
-            return billPlan === "monthly" ? plan.priceMonthlyUSD : plan.priceYearlyUSD;
-        }
-        return billPlan === "monthly" ? plan.priceMonthlyDJF : plan.priceYearlyDJF;
-    };
+      {/* Metrics Section */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full mb-16">
+        {metrics.map((metric, index) => (
+          <OutcomeMetric key={index} {...metric} />
+        ))}
+      </div>
 
-    return (
-        <div className="relative flex flex-col items-center justify-center max-w-5xl py-20 mx-auto">
-            <div className="flex flex-col items-center justify-center max-w-2xl mx-auto">
-                <AnimationContainer className="flex flex-col items-center justify-center">
-                    <Badge size="lg" variant="outline">
-                        <Shield className="w-4 h-4" />
-                        <span className="ml-2 text-sm">Technology Solutions</span>
-                    </Badge>
-                    <h2 className="mt-6 text-2xl font-semibold text-center lg:text-3xl xl:text-4xl">
-                        Transform Your Business with SAHAN HUB
-                    </h2>
-                    <p className="max-w-lg mt-6 text-center text-neutral-500">
-                        From custom software development to strategic consulting, we provide comprehensive technology solutions to drive your business forward.
-                    </p>
-                </AnimationContainer>
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-16">
+        {features.map((feature, idx) => (
+          <FeatureCard
+            key={idx}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+            delay={0.1 * idx}
+          />
+        ))}
+      </div>
 
-                <AnimationContainer delay={0.2}>
-                    <div className="flex flex-col items-center justify-center mt-6 space-y-4">
-                        <div className="flex items-center justify-center space-x-4">
-                            <Button 
-                                variant={currency === "USD" ? "default" : "outline"} 
-                                size="sm"
-                                onClick={() => setCurrency("USD")}
-                            >
-                                USD
-                            </Button>
-                            <Button 
-                                variant={currency === "DJF" ? "default" : "outline"}
-                                size="sm"
-                                onClick={() => setCurrency("DJF")}
-                            >
-                                DJF
-                            </Button>
-                        </div>
-                        <div className="flex items-center justify-center space-x-4">
-                            <span className="text-base font-medium">Monthly</span>
-                            <button onClick={handleSwitch} className="relative rounded-full focus:outline-none">
-                                <div className="w-12 h-6 transition rounded-full shadow-md outline-none bg-primary"></div>
-                                <div
-                                    className={cn(
-                                        "absolute inline-flex items-center justify-center w-4 h-4 transition-all duration-200 ease-in-out top-1 left-1 rounded-full bg-white",
-                                        billPlan === "annually" ? "translate-x-6" : "translate-x-0"
-                                    )}
-                                />
-                            </button>
-                            <span className="text-base font-medium">Annually</span>
-                            {billPlan === "annually" && (
-                                <span className="ml-2 text-sm text-primary">Save 20%</span>
-                            )}
-                        </div>
-                    </div>
-                </AnimationContainer>
+      {/* Call to Action */}
+      <AnimationContainer delay={0.4} className="w-full">
+        <div className="relative w-full p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-blue-600/10 border border-primary/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="text-2xl font-semibold mb-2">Ready to Transform Your Business?</h3>
+              <p className="text-neutral-500">Let's discuss how SAHAN HUB can drive your success</p>
             </div>
-
-            <div className="grid w-full grid-cols-1 gap-8 pt-8 lg:grid-cols-3 md:pt-12 lg:pt-16">
-                {plans.map((plan, idx) => (
-                    <AnimationContainer key={idx} delay={0.1 * idx + 0.1}>
-                        <Plan key={plan.id} plan={plan} billPlan={billPlan} getPrice={getPrice} />
-                    </AnimationContainer>
-                ))}
-            </div>
-
-            <div className="flex items-center w-full mt-8 lg:justify-evenly flex-wrap justify-center gap-6 lg:mt-10">
-                <AnimationContainer delay={0.2} className="flex items-center gap-x-2">
-                    <CreditCard className="w-5 h-5 text-primaryLighter-foreground" />
-                    <span className="text-neutral-500">Flexible payment options</span>
-                </AnimationContainer>
-                <AnimationContainer delay={0.25} className="flex items-center gap-x-2">
-                    <Headset className="w-5 h-5 text-primaryLighter-foreground" />
-                    <span className="text-neutral-500">Expert technical support</span>
-                </AnimationContainer>
-                <AnimationContainer delay={0.3} className="flex items-center gap-x-2">
-                    <CircleArrowUp className="w-5 h-5 text-primaryLighter-foreground" />
-                    <span className="text-neutral-500">Continuous optimization</span>
-                </AnimationContainer>
-            </div>
+            <Button size="lg" className="whitespace-nowrap">
+              Get Started Today
+            </Button>
+          </div>
         </div>
-    );
+      </AnimationContainer>
+
+      {/* Trust Indicators */}
+      <div className="flex items-center w-full mt-12 justify-evenly flex-wrap gap-6">
+        {trustIndicators.map((indicator, idx) => (
+          <AnimationContainer key={idx} delay={indicator.delay} className="flex items-center gap-x-2">
+            <indicator.icon className="w-5 h-5 text-primary" />
+            <span className="text-neutral-500">{indicator.text}</span>
+          </AnimationContainer>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-const Plan = ({ 
-    plan, 
-    billPlan,
-    getPrice 
-}: { 
-    plan: PricingPlan; 
-    billPlan: Plan;
-    getPrice: (plan: PricingPlan) => string;
-}) => {
-    return (
-        <div
-            className={cn(
-                "flex flex-col rounded-2xl border cursor-pointer transition-all bg-background items-start w-full select-none h-full",
-                plan.title === "Professional" ? "border-primary/60 hover:border-primary" : "border-border/60 hover:border-muted-foreground/50"
-            )}
-        >
-            <div
-                className={cn(
-                    "p-4 md:p-8 flex rounded-2xl flex-col items-start rounded-b-none border-b border-border/60 w-full relative",
-                    plan.title === "Professional" ? "bg-primary/10" : "bg-neutral-500/10"
-                )}
-            >
-                <span className="font-medium text-muted-foreground">{plan.title}</span>
-                <h3 className="mt-4 text-xl font-medium md:text-2xl">{getPrice(plan)}</h3>
-                <span className="mt-2 text-sm text-neutral-500">
-                    {plan.priceMonthlyUSD === "Custom" ? "Custom pricing" : billPlan === "monthly" ? "per month" : "per year"}
-                </span>
-                {plan.title === "Professional" && (
-                    <span className="absolute border border-primary/60 bg-primary/20 top-3 right-3 rounded-full px-3 py-1.5 text-xs text-primary">
-                        Most Popular
-                    </span>
-                )}
-            </div>
-            <div className="flex flex-col items-start w-full p-5 gap-y-4">
-                {plan.features.map((feature, index) => (
-                    <div key={index} className="flex items-center justify-start gap-2">
-                        <div
-                            className={cn(
-                                "flex items-center justify-center w-5 h-5 rounded-full",
-                                plan.title === "Professional" ? "bg-primary/20" : "bg-neutral-500/20"
-                            )}
-                        >
-                            <Check
-                                className={cn(
-                                    "w-3 h-3",
-                                    plan.title === "Professional" ? "text-primary" : "text-neutral-600"
-                                )}
-                            />
-                        </div>
-                        <span className="text-neutral-500">{feature}</span>
-                    </div>
-                ))}
-            </div>
-            <div className="flex flex-col items-start w-full px-4 pt-2 pb-5 md:pb-6 md:px-6">
-                <Button size="lg" variant={plan.title === "Professional" ? "default" : "outline"} className="w-full">
-                    {plan.buttonText}
-                </Button>
-                <span className="px-2 mt-4 text-sm text-muted-foreground">Customizable solutions</span>
-            </div>
-        </div>
-    );
-};
-
-export default Pricing;
+export default PromotionalShowcase;

@@ -12,7 +12,7 @@ const Companies = () => {
 
     return (
         <div className="flex flex-col items-center justify-center w-full md:max-w-5xl py-20 mx-auto">
-            <div className="flex flex-col items-center justify-center w-full px-4 mx-auto lg:px-8">
+        {/*  <div className="flex flex-col items-center justify-center w-full px-4 mx-auto lg:px-8">
                 <AnimationContainer>
                     <div className="flex flex-col items-center justify-center">
                         <h4 className="text-lg text-neutral-500">
@@ -47,6 +47,7 @@ const Companies = () => {
                     </div>
                 </AnimationContainer>
             </div>
+            */}
         </div>
     )
 };

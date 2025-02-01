@@ -14,9 +14,9 @@ const Navbar = () => {
                 <div className="flex items-center justify-between w-full flex-nowrap">
                     <div className="flex items-center flex-1 lg:flex-none">
                               {/* Desktop */}
-                        <Link href="/" className="text-lg font-semibold text-primary">
-                            <Icons.logo className="w-auto h-6" />
-                        </Link>
+                              <Link href="/" className="text-lg font-semibold text-primary">
+                                SAHAN HUB
+                            </Link>
                         <div className="items-center hidden ml-4 lg:flex">
                                                           {/* Desktop */}
 
