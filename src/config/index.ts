@@ -2,10 +2,10 @@ import { Metadata } from "next";
 
 export const SITE_CONFIG: Metadata = {
     title: {
-        default: "SAHAN HUB - Technology Solutions & Digital Transformation",
-        template: `%s | SAHAN HUB`
+        default: "SAHAN HUB & Teachnlogy - Technology Solutions & Educational Innovation",
+        template: `%s | SAHAN HUB & Teachnlogy`
     },
-    description: "SAHAN HUB offers comprehensive technology solutions including custom software development, data analytics, AI/ML, digital transformation, cloud solutions, and cybersecurity services.",
+    description: "SAHAN HUB combines Teachnlogy innovation with comprehensive technology solutions including custom software development, educational technology, data analytics, AI/ML, digital transformation, cloud solutions, and cybersecurity services.",
     icons: {
         icon: [
             {
@@ -15,8 +15,8 @@ export const SITE_CONFIG: Metadata = {
         ]
     },
     openGraph: {
-        title: "SAHAN HUB - Technology Solutions & Digital Transformation",
-        description: "Transform your business with SAHAN HUB's comprehensive technology solutions. Expert software development, data analytics, AI/ML implementation, and strategic consulting services.",
+        title: "SAHAN HUB & Teachnlogy - Technology Solutions & Educational Innovation",
+        description: "Transform your business and educational practices with SAHAN HUB's comprehensive technology solutions and Teachnlogy integration. Expert software development, educational technology, data analytics, AI/ML implementation, and strategic consulting services.",
         images: [
             {
                 url: "/assets/og-image.png",
@@ -24,13 +24,13 @@ export const SITE_CONFIG: Metadata = {
         ],
         type: "website",
         locale: "en",
-        siteName: "SAHAN HUB"
+        siteName: "SAHAN HUB & Teachnlogy"
     },
     twitter: {
         card: "summary_large_image",
         creator: "@sahanhub",
-        title: "SAHAN HUB - Technology Solutions & Digital Transformation",
-        description: "Transform your business with SAHAN HUB's comprehensive technology solutions. Expert software development, data analytics, AI/ML implementation, and strategic consulting services.",
+        title: "SAHAN HUB & Teachnlogy - Technology Solutions & Educational Innovation",
+        description: "Transform your business and educational practices with SAHAN HUB's comprehensive technology solutions and Teachnlogy integration. Expert software development, educational technology, data analytics, AI/ML implementation, and strategic consulting services.",
         images: [
             {
                 url: "/assets/og-image.png",
@@ -38,6 +38,9 @@ export const SITE_CONFIG: Metadata = {
         ]
     },
     keywords: [
+        "teachnlogy",
+        "educational technology",
+        "e-learning solutions",
         "technology solutions",
         "software development",
         "data analytics",
@@ -47,7 +50,9 @@ export const SITE_CONFIG: Metadata = {
         "cybersecurity",
         "Djibouti",
         "East Africa",
-        "IT services"
+        "IT services",
+        "educational innovation",
+        "teaching technology"
     ],
     authors: [
         {

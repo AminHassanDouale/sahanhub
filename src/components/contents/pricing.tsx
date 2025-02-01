@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { LucideIcon, Rocket, Brain, Target, Shield, TrendingUp, Database, Code, Users } from 'lucide-react';
 import AnimationContainer from "../utils/animation-container";
@@ -98,9 +99,13 @@ const PromotionalShowcase: React.FC = () => {
           <p className="text-lg text-neutral-500 mb-8">
             Join the digital revolution with SAHAN HUB's comprehensive technology solutions and expert consulting services.
           </p>
-          <div className="flex gap-4">
-            <Button size="lg">Schedule Consultation</Button>
-            <Button size="lg" variant="outline">View Solutions</Button>
+          <div className="flex justify-center gap-4">
+          <Link href="/consultation">
+              <Button size="lg">
+                Schedule Consultation
+              </Button>
+            </Link>
+          
           </div>
         </AnimationContainer>
       </div>
