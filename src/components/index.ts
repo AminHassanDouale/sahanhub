@@ -18,7 +18,7 @@ import HeroImage from "./contents/hero-image";
 import Hero from "./contents/hero";
 import Companies from "./contents/companies";
 import Services from "./contents/services";
-import Features from "./contents/features";
+// import Features from "./contents/features";  // Removed this line
 import Offerings from "./contents/offerings";
 import Pricing from "./contents/pricing";
 import Banner from "./contents/banner";
@@ -48,7 +48,6 @@ export {
     Hero,
     Companies,
     Services,
-    Features,
     Offerings,
     Pricing,
     Banner,

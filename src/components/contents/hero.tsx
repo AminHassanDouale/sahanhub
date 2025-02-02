@@ -50,11 +50,6 @@ const Hero = () => {
                             <span className="hidden lg:inline"> We specialize in custom software, data analytics, AI/ML implementation, and digital transformation.</span>
                         </p>
                         <div className="items-center justify-center hidden mt-8 lg:flex gap-x-4">
-                            <Button size="lg" asChild>
-                                <Link href="/contact">
-                                    Get Started
-                                </Link>
-                            </Button>
                             <Button size="lg" variant="secondary" asChild>
                                 <Link href="/services" className="flex items-center">
                                     Our Solutions
