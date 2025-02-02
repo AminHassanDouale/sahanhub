@@ -19,7 +19,7 @@ import Hero from "./contents/hero";
 import Companies from "./contents/companies";
 import Services from "./contents/services";
 // import Features from "./contents/features";  // Removed this line
-import Offerings from "./contents/offerings";
+//import Offerings from "./contents/offerings";
 import Pricing from "./contents/pricing";
 import Banner from "./contents/banner";
 import Testimonial from "./contents/testimonial";
@@ -48,7 +48,8 @@ export {
     Hero,
     Companies,
     Services,
-    Offerings,
+   // Offerings,
+   // features,
     Pricing,
     Banner,
     Testimonial,

@@ -1,4 +1,4 @@
-import { SectionContainer, Hero, HeroImage, Companies, Services, Offerings, Pricing, Testimonial, Tools, Banner } from "@/components";
+import { SectionContainer, Hero, HeroImage, Companies, Services, Pricing, Testimonial, Tools, Banner } from "@/components";
 
 const HomeSection = () => {
     return (
@@ -10,7 +10,7 @@ const HomeSection = () => {
                     <Companies />
                     <Services />
                     {/* <Features /> */}  {/* Comment out just this line */}
-                    <Offerings />
+                    {/* <Offerings /> */}  {/* Comment out just this line */}
                     <Pricing />
                     <Testimonial />
                     <Tools />
