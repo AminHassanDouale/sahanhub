@@ -2,15 +2,16 @@ import { Metadata } from "next";
 
 export const SITE_CONFIG: Metadata = {
     title: {
-        default: "SAHAN HUB & Teachnlogy | Educational Technology Solutions in East Africa",
-        template: `%s | SAHAN HUB & Teachnlogy`
+        default: "SAHAN HUB & Technology | Educational Technology Solutions in East Africa",
+        template: `%s | SAHAN HUB & Technology`
     },
-    description: "Leading EdTech solutions provider in Djibouti and East Africa. SAHAN HUB offers custom software development, AI/ML integration, cloud solutions, and innovative educational technology services to transform your business.",
+    description: "Leading Tech solutions provider in Djibouti and East Africa. SAHAN HUB offers custom software development, AI/ML integration, cloud solutions, and innovative educational technology services to transform your business.",
     icons: {
         icon: [
             {
-                url: "/icons/favicon.svg",
-                href: "/icons/favicon.svg",
+                url: "/images/logo.jpg",
+            sizes: "512x512",
+            type: "image/jpeg"
             },
             {
                 url: "/icons/favicon-32x32.png",
@@ -33,33 +34,33 @@ export const SITE_CONFIG: Metadata = {
     },
     manifest: "/site.webmanifest",
     openGraph: {
-        title: "SAHAN HUB & Teachnlogy | Educational Technology Solutions in East Africa",
-        description: "Transform your educational and business practices with SAHAN HUB's comprehensive technology solutions. Specialized in EdTech, AI/ML, cloud computing, and digital transformation in Djibouti.",
+        title: "SAHAN HUB & Technology | Educational Technology Solutions in East Africa",
+        description: "Transform your educational and business practices with SAHAN HUB's comprehensive technology solutions. Specialized in Tech, AI/ML, cloud computing, and digital transformation in Djibouti and global level.",
         url: "https://sahanhub.com",
         images: [
             {
-                url: "/assets/og-image.png",
-                width: 1200,
-                height: 630,
-                alt: "SAHAN HUB & Teachnlogy",
+                url: "/images/logo.jpg",
+                width: 512,
+                height: 512,
+                alt: "SAHAN HUB & Technology Logo",
             }
         ],
         type: "website",
         locale: "en",
-        siteName: "SAHAN HUB & Teachnlogy"
+        siteName: "SAHAN HUB & Technology"
     },
     twitter: {
         card: "summary_large_image",
         creator: "@sahanhub",
         site: "@sahanhub",
-        title: "SAHAN HUB & Teachnlogy | Educational Technology Solutions",
+        title: "SAHAN HUB & Technology | Educational Technology Solutions",
         description: "Leading EdTech solutions provider in Djibouti. Custom software development, AI/ML integration, and innovative educational technology services.",
         images: [
             {
-                url: "/assets/og-image.png",
-                width: 1200,
-                height: 630,
-                alt: "SAHAN HUB & Teachnlogy",
+                url: "/images/logo.jpg",
+            width: 512,
+            height: 512,
+            alt: "SAHAN HUB & Technology Logo",
             }
         ]
     },
@@ -76,7 +77,7 @@ export const SITE_CONFIG: Metadata = {
         "educational innovation",
         "teaching technology",
         "SAHAN HUB",
-        "Teachnlogy",
+        "Technology",
         "IT services Djibouti",
         "business technology solutions"
     ],
@@ -121,10 +122,10 @@ export const SITE_CONFIG: Metadata = {
 export const SITE_SCHEMA = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "SAHAN HUB & Teachnlogy",
+    name: "SAHAN HUB & Technology",
     description: "Leading EdTech solutions provider in Djibouti and East Africa",
     url: "https://sahanhub.com",
-    logo: "https://sahanhub.com/assets/logo.png",
+    logo: "https://sahanhub.com/images/logo.jpg",
     sameAs: [
         "https://twitter.com/sahanhub",
         "https://linkedin.com/company/sahanhub",
