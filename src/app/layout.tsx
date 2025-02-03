@@ -3,11 +3,20 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import Script from 'next/script';
-import WebVitalsReport from '@/components/web-vitals-report';
+import { Viewport } from 'next';
 
 const font = Inter({ subsets: ["latin"] });
 
-export const metadata = SITE_CONFIG;
+// Separate viewport configuration from metadata
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+};
+
+// Remove viewport from metadata
+const { viewport: _, ...metadataWithoutViewport } = SITE_CONFIG;
+export const metadata = metadataWithoutViewport;
 
 export default function RootLayout({
     children,
@@ -29,7 +38,6 @@ export default function RootLayout({
                     font.className
                 )}
             >
-                <WebVitalsReport />
                 {children}
             </body>
         </html>
