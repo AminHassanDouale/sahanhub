@@ -46,16 +46,33 @@ export default function RootLayout({
             "image": "https://sahan-hub.com/images/logo.jpg",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Heron",
+                "streetAddress": "Heron Road, Quartier 7",
                 "addressLocality": "Djibouti City",
-                "addressCountry": "DJ"
-            }
+                "addressRegion": "Djibouti",
+                "postalCode": "BP 8987",
+                "addressCountry": "DJ",
+                "telephone": "+253 xx xx xx xx",
+                "email": "contact@sahan-hub.com"
+            },
+            "url": "https://sahan-hub.com",
+            "sameAs": [
+                "https://www.facebook.com/SahanHub",
+                "https://www.linkedin.com/company/sahan-hub"
+            ]
         })}}
     />
     <meta property="og:image" content="https://sahan-hub.com/images/logo.jpg" />
     <meta name="twitter:image" content="https://sahan-hub.com/images/logo.jpg" />
     <link rel="icon" href="/images/favicon-32x32.jpg" sizes="32x32" type="image/jpeg" />
     <link rel="icon" href="/images/favicon-16x16.jpg" sizes="16x16" type="image/jpeg" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:title" content="SAHAN HUB - Technology Solutions"/>
+    <meta property="og:description" content="Comprehensive technology solutions and strategic consulting services"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.jpg"/>
+    <link rel="manifest" href="/site.webmanifest"/>
     
             </head>
             <body

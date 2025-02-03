@@ -8,7 +8,8 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'sahan-hub.com',
-        pathname: '/icons/**',
+        pathname: '/images/**', 
+
       },
     ],
   },
