@@ -1,16 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone', // Change from 'export' for better performance
+  output: 'standalone',
   images: {
     domains: ['sahan-hub.com'],
-    unoptimized: true, // Required for static export
-    path: '/public/icons/' // Add this line
-
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sahan-hub.com',
+        pathname: '/icons/**',
+      },
+    ],
   },
-  // Enhanced redirects with additional SEO-friendly rules
   async redirects() {
     return [
-      // Maintain existing www to non-www redirect
       {
         source: '/:path*',
         has: [
@@ -22,7 +25,6 @@ const nextConfig = {
         destination: 'https://sahan-hub.com/:path*',
         permanent: true,
       },
-      // Redirect old URLs to maintain SEO juice (add if you have any)
       {
         source: '/tech/:path*',
         destination: '/technology/:path*',
@@ -30,9 +32,25 @@ const nextConfig = {
       }
     ]
   },
-  // Add headers for better SEO and security
   async headers() {
     return [
+      {
+        source: '/icons/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains'
+          }
+        ],
+      },
       {
         source: '/:path*',
         headers: [
@@ -43,21 +61,15 @@ const nextConfig = {
           {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains'
-          },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
           }
         ],
       }
     ]
   },
-  // Optimize build output
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Minimize output
   swcMinify: true,
-}
-
-export default nextConfig
+ }
+ 
+ export default nextConfig
