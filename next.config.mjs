@@ -2,7 +2,10 @@
 const nextConfig = {
   output: 'standalone', // Change from 'export' for better performance
   images: {
+    domains: ['sahan-hub.com'],
     unoptimized: true, // Required for static export
+    path: '/public/icons/' // Add this line
+
   },
   // Enhanced redirects with additional SEO-friendly rules
   async redirects() {

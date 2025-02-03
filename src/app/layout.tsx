@@ -45,6 +45,10 @@ export default function RootLayout({
                     src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
                 />
                 <link rel="canonical" href="https://sahan-hub.com" />
+                <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/favicon.svg" />
+    <link rel="mask-icon" href="/icons/favicon.svg" color="#000000" />
+    <meta name="msapplication-TileImage" content="/icons/favicon.svg" />
             </head>
             <body
                 className={cn(
