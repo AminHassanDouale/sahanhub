@@ -41,7 +41,7 @@ export default function RootLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "SAHAN HUB",
+            "name": "SAHAN HUB & Technology",
             "logo": "https://sahan-hub.com/images/logo.jpg",
             "image": "https://sahan-hub.com/images/logo.jpg",
             "address": {
