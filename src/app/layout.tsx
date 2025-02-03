@@ -5,16 +5,21 @@ import { Inter } from "next/font/google";
 import Script from 'next/script';
 import { Viewport } from 'next';
 
-const font = Inter({ subsets: ["latin"] });
+const font = Inter({ 
+  subsets: ["latin"],
+  display: 'swap' 
+});
 
-// Separate viewport configuration from metadata
 export const viewport: Viewport = {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }
+  ]
 };
 
-// Remove viewport from metadata
 const { viewport: _, ...metadataWithoutViewport } = SITE_CONFIG;
 export const metadata = metadataWithoutViewport;
 
@@ -24,13 +29,22 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html 
+            lang="en" 
+            suppressHydrationWarning
+            className={cn("scroll-smooth")}
+        >
             <head>
                 <Script
                     id="schema-org"
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }}
                 />
+                <Script 
+                    strategy="afterInteractive"
+                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                />
+                <link rel="canonical" href="https://sahan-hub.com" />
             </head>
             <body
                 className={cn(
