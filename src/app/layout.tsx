@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import Script from 'next/script';
-import { webVitals } from '@/lib/web-vitals';
-import { useEffect } from 'react';
+import WebVitalsReport from '@/components/web-vitals-report';
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -15,11 +14,6 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // Initialize web vitals monitoring
-    useEffect(() => {
-        webVitals();
-    }, []);
-
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -35,6 +29,7 @@ export default function RootLayout({
                     font.className
                 )}
             >
+                <WebVitalsReport />
                 {children}
             </body>
         </html>
